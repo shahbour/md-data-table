@@ -6,7 +6,7 @@ angular.module('nutritionApp').controller('nutritionController', ['$http', '$mdE
   $scope.query = {
     order: 'name',
     limit: 5,
-    page: 1
+    page: 0
   };
   
   $scope.columns = [{

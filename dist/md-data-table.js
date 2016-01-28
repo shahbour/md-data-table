@@ -8,7 +8,7 @@ angular.module('md-table-pagination.html', []).run(['$templateCache', function($
     '<span class="label" ng-if="$pagination.showPageSelect()">{{$pagination.$label[\'page\']}}</span>\n' +
     '\n' +
     '<md-select class="md-table-select" ng-if="$pagination.showPageSelect()" ng-model="$pagination.page" md-container-class="md-pagination-select" ng-change="$pagination.onPaginationChange()" aria-label="Page">\n' +
-    '  <md-option ng-repeat="num in $pagination.range($pagination.pages()) track by $index" ng-value="$index + 1">{{$index + 1}}</md-option>\n' +
+    '  <md-option ng-repeat="num in $pagination.range($pagination.pages()) track by $index" ng-value="$index + 0">{{$index + 0}}</md-option>\n' +
     '</md-select>\n' +
     '\n' +
     '<span class="label">{{$pagination.$label[\'rowsPerPage\']}}</span>\n' +
@@ -1240,16 +1240,16 @@ function mdTablePagination() {
     };
     
     self.first = function () {
-      self.page = 1;
+      self.page = 0;
       self.onPaginationChange();
     };
     
     self.hasNext = function () {
-      return self.page * self.limit < self.total;
+      return (self.page + 1) * self.limit < self.total;
     };
     
     self.hasPrevious = function () {
-      return self.page > 1;
+      return self.page > 0;
     };
     
     self.last = function () {
@@ -1258,11 +1258,11 @@ function mdTablePagination() {
     };
     
     self.max = function () {
-      return self.hasNext() ? self.page * self.limit : self.total;
+      return self.hasNext() ? (self.page + 1) * self.limit : self.total;
     };
     
     self.min = function () {
-      return self.page * self.limit - self.limit;
+      return (self.page + 1) * self.limit - self.limit;
     };
     
     self.next = function () {
@@ -1311,7 +1311,7 @@ function mdTablePagination() {
       }
       
       // find closest page from previous min
-      self.page = Math.floor(((self.page * oldValue - oldValue) + newValue) / (isZero(newValue) ? 1 : newValue));
+      self.page = Math.floor((((self.page+1) * oldValue - oldValue) + newValue) / (isZero(newValue) ? 1 : newValue)) - 1;
       self.onPaginationChange();
     });
   }
