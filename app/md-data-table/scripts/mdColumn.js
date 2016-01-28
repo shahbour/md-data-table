@@ -50,7 +50,7 @@ function mdColumn($compile) {
         return false;
       }
       
-      return headCtrl.order === scope.orderBy || headCtrl.order === '-' + scope.orderBy;
+      return headCtrl.order === scope.orderBy + ',asc' || headCtrl.order === scope.orderBy + ',desc';
     }
     
     function isNumeric() {
@@ -64,9 +64,9 @@ function mdColumn($compile) {
     function setOrder() {
       scope.$applyAsync(function () {
         if(!isActive()) {
-          headCtrl.order = scope.getDirection() === 'md-asc' ? scope.orderBy : '-' + scope.orderBy;
+          headCtrl.order = scope.getDirection() === 'md-asc' ? scope.orderBy + ',asc' : scope.orderBy + ',desc';
         } else {
-          headCtrl.order = scope.getDirection() === 'md-asc' ? '-' + scope.orderBy : scope.orderBy;
+          headCtrl.order = scope.getDirection() === 'md-asc' ? scope.orderBy + ',desc' : scope.orderBy + ',asc';
         }
         
         if(angular.isFunction(headCtrl.onReorder)) {
@@ -90,7 +90,7 @@ function mdColumn($compile) {
         return attrs.hasOwnProperty('mdDesc') ? 'md-desc' : 'md-asc';
       }
       
-      return headCtrl.order === '-' + scope.orderBy ? 'md-desc' : 'md-asc';
+       return headCtrl.order === scope.orderBy + ',desc' ? 'md-desc' : 'md-asc';
     };
     
     scope.$watch(isActive, function (active) {
