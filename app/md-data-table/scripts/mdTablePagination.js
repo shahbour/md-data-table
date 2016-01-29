@@ -43,7 +43,7 @@ function mdTablePagination() {
     };
     
     self.last = function () {
-      self.page = self.pages();
+      self.page = self.pages() - 1;
       self.onPaginationChange();
     };
     
@@ -52,7 +52,7 @@ function mdTablePagination() {
     };
     
     self.min = function () {
-      return (self.page + 1) * self.limit - self.limit;
+      return self.page * self.limit;
     };
     
     self.next = function () {
