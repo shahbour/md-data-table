@@ -116,7 +116,6 @@ md-select.md-table-select > .md-select-value > span {
   height: auto;
   -webkit-transform: none !important;
           transform: none !important;
-  height: 15px;
 }
 md-select.md-table-select > .md-select-value > span.md-select-icon {
   display: -webkit-flex;
