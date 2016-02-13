@@ -22,7 +22,7 @@ This software is provided free of charge and without restriction under the [MIT 
 
 A live [demo](http://danielnagy.me/md-data-table).
 
-A fork-able [Codepen](http://codepen.io/anon/pen/YwGJVr?editors=101). Please use this to reproduce any issues you may be experiencing.
+A fork-able [Codepen](http://codepen.io/anon/pen/BjvLVJ?editors=1010). Please use this to reproduce any issues you may be experiencing.
 
 ## Installation
 
@@ -145,6 +145,19 @@ angular.module('demoApp').controller('sampleController', ['$nutrition', '$scope'
 ```
 
 ## Change Log
+
+#### Version 0.9.11
+###### February 7, 2016
+
+Merge pull request [#281](https://github.com/daniel-nagy/md-data-table/pull/281) from aleeeftw/angular-symbols-fix.
+
+#### Version 0.9.10
+###### February 3, 2016
+
+* Fix select menu styles for Angular Material v1.0.4
+* Renamed md-data-table directory to src and moved it outside the demo app
+* Changed main files to unminified source
+* Added comment banner to source
 
 #### Version 0.9.9
 ###### January 19, 2016
